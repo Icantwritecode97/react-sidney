@@ -1,5 +1,5 @@
 {
-  "window.zoomLevel": 4,
+  "window.zoomLevel": 2,
   "editor.renderWhitespace": "all",
   "files.trimTrailingWhitespace": true,
   "editor.tabSize": 2,
@@ -36,6 +36,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "json.schemas": [],
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "liveServer.settings.port": 5501
 }
 
