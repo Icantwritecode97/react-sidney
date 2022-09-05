@@ -642,6 +642,7 @@ a {
   color: #fff;
   display: flex;
   min-height: 150px;
+  flex-wrap: wrap;
 }
 
 .home-newsletter [for='field-newsletter'] {
@@ -678,6 +679,11 @@ a {
   height: 60px;
   background: url('./../images/icons/mail-send.png') no-repeat center right;
   background-size: 65px;
+}
+
+.home-newsletter .form-message {
+  width: 100%;
+  text-align: center;
 }
 
 .footer-top {
@@ -769,3 +775,17 @@ a {
 .footer-bottom p {
   margin-bottom: 4px;
 }
+Footer
+© 2022 GitHub, Inc.
+Footer navigation
+Terms
+Privacy
+Security
+Status
+Docs
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
