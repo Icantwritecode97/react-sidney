@@ -183,16 +183,21 @@ const AddToWishlistButton = ({ productId }) => {
 };
 
 class ProductControls extends React.Component {
+  // jsx needs one root export element
   render() {
+    const productId = this.props.productId;
+
+    // study 1
+    const WrappedButton = ({ productId }) => {
+      return <AddToCartButton productId={productId}></AddToCartButton>;
+    };
+
+    // study 2
+    const X = AddToWishlistButton;
+
     return [
-      <AddToCartButton
-        key="cart"
-        productId={this.props.productId}
-      ></AddToCartButton>,
-      <AddToWishlistButton
-        key="wl"
-        productId={this.props.productId}
-      ></AddToWishlistButton>,
+      <WrappedButton productId={productId} key="cart"></WrappedButton>,
+      <X key="wl" productId={this.props.productId}></X>,
     ];
   }
 }
