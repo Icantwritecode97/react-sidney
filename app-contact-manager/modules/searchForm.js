@@ -1,4 +1,4 @@
-import { addMessage } from './notificationBar.js';
+import { addMessage, clearMessages } from './notificationBar.js';
 import { findContact } from './query.js';
 // ommit {} for default exports
 import render from './message.js';
@@ -13,6 +13,8 @@ searchForm.addEventListener('submit', (event) => {
   // addEventListener
   const form = event.currentTarget;
   const queryInput = form.q;
+
+  clearMessages();
 
   const contacts = findContact(queryInput.value.toLowerCase());
   const contactsCount = contacts.length;
