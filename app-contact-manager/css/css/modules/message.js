@@ -1,9 +1,15 @@
-export default (message = '', type = 'primary') => {
-  const messageContainer = document.createElement('div');
-  messageContainer.classList.add('alert', `alert-${type}`);
+const notificationBar = document.querySelector('.notification-bar');
 
-  // FYI exista un textContent
-  messageContainer.textContent = message;
+// event delegation pe notificationBar
 
-  return messageContainer;
+export const addMessage = (messageElement) => {
+  clearMessages();
+
+  notificationBar.append(messageElement);
 };
+
+export const clearMessages = () => {
+  notificationBar.innerHTML = '';
+};
+
+export default notificationBar;
