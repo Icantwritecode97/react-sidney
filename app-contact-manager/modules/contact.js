@@ -13,7 +13,7 @@ export const render = (contact) => {
     </ul>
     <button title="Delete"
       type="button"
-      class="btn btn-secondary"
+      class="btn btn-secondary delete-friend"
     >Delete</button>
 
     <button title="Edit"
