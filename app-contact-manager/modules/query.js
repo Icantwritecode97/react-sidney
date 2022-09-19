@@ -22,3 +22,23 @@ export const findContact = (needle = 'query') => {
 
   return results;
 };
+
+export const deleteContact = (contactId) => {
+  contactId = Number(contactId);
+  let contactIndex = -1;
+
+  for (let i = 0; i < contacts.length; i++) {
+    const contact = contacts[i];
+
+    if (contact.id === contactId) {
+      contactIndex = i;
+
+      break;
+    }
+  }
+
+  if (contactIndex >= 0) {
+    // splice mutates
+    contacts.splice(contactIndex, 1);
+  }
+};

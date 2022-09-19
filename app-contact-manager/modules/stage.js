@@ -1,3 +1,7 @@
+import { addMessage } from './notificationBar.js';
+import { deleteContact } from './query.js';
+import renderMessage from './message.js';
+
 const stage = document.querySelector('.stage');
 
 // delete contact
@@ -12,7 +16,14 @@ stage.addEventListener('click', (event) => {
     return;
   }
 
-  alert('delete friend');
+  const button = target;
+  const parent = button.parentElement;
+  const contactId = parent.dataset.contactId;
+
+  deleteContact(contactId);
+
+  parent.remove();
+  addMessage(renderMessage('Contact removed', 'success'));
 });
 
 export default stage;

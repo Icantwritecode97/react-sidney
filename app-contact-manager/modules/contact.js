@@ -1,9 +1,10 @@
 import { render as renderPet } from './pet.js';
 
 export const render = (contact) => {
-  const { name, surname, phone, email, pets = [] } = contact;
+  const { id, name, surname, phone, email, pets = [] } = contact;
   const container = document.createElement('article');
   container.classList.add('contact', 'border', 'p-3', 'mb-4');
+  container.dataset.contactId = id;
 
   container.innerHTML = `
     <h1>${name + ' ' + surname}</h1>
