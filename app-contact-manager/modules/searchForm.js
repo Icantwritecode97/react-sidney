@@ -21,10 +21,10 @@ searchForm.addEventListener('submit', (event) => {
 
   const contacts = findContact(queryInput.value.toLowerCase());
   const contactsCount = contacts.length;
-  const wrapper = document.createElement('div');
+  const fragment = new DocumentFragment();
 
   contacts.forEach((contact) => {
-    wrapper.append(renderContact(contact));
+    fragment.append(renderContact(contact));
   });
 
   if (contactsCount <= 0) {
@@ -56,7 +56,7 @@ searchForm.addEventListener('submit', (event) => {
   }
 
   queryInput.value = '';
-  stage.append(wrapper);
+  stage.append(fragment);
 });
 
 export default searchForm;
