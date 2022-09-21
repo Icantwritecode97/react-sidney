@@ -1,7 +1,15 @@
 import { addMessage, clearMessages } from './notificationBar.js';
-import { addContact, deleteContact, editContact, getContact } from './query.js';
+import {
+  addContact,
+  addPet,
+  deleteContact,
+  deletePet,
+  editContact,
+  getContact,
+} from './query.js';
 import renderMessage from './message.js';
 import { render as renderEditContact } from './editContact.js';
+import { render as renderAddPet } from './addPet.js';
 
 const stage = document.querySelector('.stage');
 
@@ -117,6 +125,82 @@ stage.addEventListener('submit', (event) => {
   };
 
   editContact(contact);
+});
+
+stage.addEventListener('click', (event) => {
+  // event.preventDefault not required for type button
+  const { target } = event;
+
+  if (
+    target.nodeName !== 'BUTTON' ||
+    !target.classList.contains('add-pet-button')
+  ) {
+    return;
+  }
+
+  const button = target;
+  const contactContainer = button.closest('.contact');
+  const contactId = contactContainer.dataset.contactId;
+
+  clearMessages();
+  stage.innerHTML = '';
+
+  stage.append(renderAddPet(contactId));
+});
+
+stage.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const { target } = event;
+
+  if (target.nodeName !== 'FORM' || !target.classList.contains('add-pet')) {
+    return;
+  }
+
+  const form = target;
+  // these are html elements
+  const { age, name, species, contactId } = form;
+  const { name: contactName, surname: contactSurname } = getContact(
+    contactId.value,
+  );
+
+  const pet = {
+    age: age.value,
+    name: name.value,
+    species: species.value,
+    id: Number(Date.now().toString().slice(-6)),
+  };
+
+  addPet(contactId.value, pet);
+
+  stage.innerHTML = '';
+  addMessage(
+    renderMessage(
+      `Pet ${name.value} added to contact ${contactName} ${contactSurname}.`,
+      'success',
+    ),
+  );
+});
+
+// delete pet button
+stage.addEventListener('click', (event) => {
+  const { target } = event;
+
+  if (
+    target.nodeName !== 'BUTTON' ||
+    !target.classList.contains('delete-pet-button')
+  ) {
+    return;
+  }
+
+  const button = target;
+  const container = button.closest('.pet');
+  const petId = Number(container.dataset.petId);
+  const contactContainer = button.closest('.contact');
+  const contactId = contactContainer.dataset.contactId;
+
+  deletePet(contactId, petId);
+
+  container.remove();
 });
 
 export default stage;
