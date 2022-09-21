@@ -33,7 +33,7 @@ stage.addEventListener('click', (event) => {
 
   if (
     target.nodeName !== 'BUTTON' ||
-    target.classList.contains('edit-contact')
+    !target.classList.contains('edit-contact-button')
   ) {
     return;
   }
