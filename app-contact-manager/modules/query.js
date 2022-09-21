@@ -50,3 +50,8 @@ export const getContact = (contactId) => {
     return id === contactId;
   });
 };
+
+export const addContact = (contact) => {
+  // push mutates
+  contacts.push(contact);
+};
