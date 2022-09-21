@@ -18,11 +18,11 @@ export const render = (contact) => {
     >Delete</button>
     <button title="Edit"
       type="button"
-      class="btn btn-secondary mx-2"
+      class="btn btn-secondary mx-2 edit-contact-button"
     >Edit</button>
     <button title="Add pet"
       type="button"
-      class="btn btn-secondary"
+      class="btn btn-secondary add-pet-button"
     >Add pet</button>
   `;
 
