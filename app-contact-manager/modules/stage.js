@@ -1,5 +1,5 @@
 import { addMessage, clearMessages } from './notificationBar.js';
-import { addContact, deleteContact, getContact } from './query.js';
+import { addContact, deleteContact, editContact, getContact } from './query.js';
 import renderMessage from './message.js';
 import { render as renderEditContact } from './editContact.js';
 
@@ -92,6 +92,31 @@ stage.addEventListener('submit', (event) => {
     renderMessage(`Contact ${name.value} ${surname.value} created.`, 'success'),
   );
   stage.innerHTML = '';
+});
+
+// save edit contact
+stage.addEventListener('submit', (event) => {
+  event.preventDefault();
+  const { target } = event;
+
+  if (
+    target.nodeName !== 'FORM' ||
+    !target.classList.contains('edit-contact')
+  ) {
+    return;
+  }
+
+  const form = target;
+  const { name, surname, phone, email, id } = form;
+  const contact = {
+    name: name.value,
+    surname: surname.value,
+    phone: phone.value,
+    email: email.value,
+    id: Number(id.value),
+  };
+
+  editContact(contact);
 });
 
 export default stage;
