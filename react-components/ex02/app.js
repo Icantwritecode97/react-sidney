@@ -95,14 +95,16 @@ console.log(sumYears);
 console.warn(`
   Folosind reduce, afiseaza suma anilor de nastere ai persoanelor.
 `);
-const sumBirthYears = person.friends.reduce((sumBirthYears, { age }) => {
-  const currentYear = new Date().getFullYear();
 
-  sumBirthYears += currentYear - age;
+console.log(
+  person.friends.reduce((sumBirthYears, { age }) => {
+    const currentYear = new Date().getFullYear();
 
-  return sumBirthYears;
-}, 0);
-console.log(sumBirthYears);
+    sumBirthYears += currentYear - age;
+
+    return sumBirthYears;
+  }, 0),
+);
 
 console.warn(`
   Afiseaza fraza: "Intre Dragos si Larry este o diferenta de xx ani.
