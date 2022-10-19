@@ -31,3 +31,21 @@ const person = {
     },
   ],
 };
+
+console.warn(`
+  Folosind obiectul person si redyce,
+  afiseaza in consola un string care contine
+  skillurile de pe pozitiile pare ale arrayului, separate prin virgula
+`);
+const string1 = person.skills.reduce((string1, skill, index) => {
+  if (index % 2 === 0) {
+    string1 += `${skill}, `;
+  }
+
+  return string1;
+}, '');
+console.log(string1.slice(0, string1.length - 2));
+
+console.warn(`
+
+`);
